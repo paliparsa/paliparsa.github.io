@@ -1,0 +1,713 @@
+/* Basic Reset & Body Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Use Poppins from Google Fonts */
+    color: #fff; /* Default text color for the dark background */
+    line-height: 1.6;
+    background: linear-gradient(to right, #6A11CB, #2575FC); /* Gradient background */
+    min-height: 100vh; /* Ensure body takes full viewport height for gradient */
+    display: flex; /* Flexbox for body to stack content vertically */
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent horizontal scroll on overlay transition */
+}
+
+.container {
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center content */
+    padding: 0 20px; /* Padding on sides for smaller screens */
+}
+
+/* Header Styles - Minimalist for the new approach */
+header {
+    padding: 20px 0;
+    position: relative; /* For positioning hamburger button if needed */
+    z-index: 1001; /* Ensure header is above overlay when it slides in */
+    background: transparent; /* Keep background transparent */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* Space out logo and toggle */
+    align-items: center;
+}
+
+header .logo h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    margin: 0;
+}
+
+/* Nav Toggle (Hamburger) Button Styles */
+.nav-toggle {
+    display: flex; /* Always display for this design */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative; /* To position it above the overlay */
+    z-index: 1002; /* Higher than header and overlay */
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger::before {
+    transform: translateY(-9px);
+}
+
+.hamburger::after {
+    transform: translateY(9px);
+}
+
+/* Animation for hamburger to 'X' */
+.nav-toggle.active .hamburger {
+    transform: translateX(-50px); /* Hide the middle bar */
+    background: transparent;
+}
+
+.nav-toggle.active .hamburger::before {
+    transform: rotate(45deg) translate(35px, -35px); /* Rotate and position top bar */
+}
+
+.nav-toggle.active .hamburger::after {
+    transform: rotate(-45deg) translate(35px, 35px); /* Rotate and position bottom bar */
+}
+
+
+/* Fullscreen Navigation Overlay Styles */
+.fullscreen-nav-overlay {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom right, #6A11CB, #2575FC); /* Match body gradient or choose a distinct one */
+    z-index: 1000; /* Below toggle button, above content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden; /* Hidden by default */
+    opacity: 0; /* Fade out by default */
+    transform: scale(0.8); /* Start smaller for scale-in effect */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0.5s;
+}
+
+.fullscreen-nav-overlay.open {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.fullscreen-nav-overlay nav {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fullscreen-nav-overlay nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0; /* Space between nav links and language switcher */
+}
+
+.fullscreen-nav-overlay nav ul li {
+    margin: 20px 0;
+}
+
+.fullscreen-nav-overlay nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 36px; /* Large links for easy tapping */
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: block; /* Make entire li clickable area */
+}
+
+.fullscreen-nav-overlay nav ul li a:hover {
+    color: #FFD700;
+    transform: translateX(10px); /* Slight slide effect on hover */
+}
+
+/* Language Switcher within the overlay */
+.fullscreen-nav-overlay .language-switcher {
+    margin-left: 0; /* Remove left margin */
+    margin-top: 0; /* Remove top margin */
+    justify-content: center; /* Center buttons */
+    /* Styles are mostly inherited, but ensure layout */
+}
+
+.fullscreen-nav-overlay .language-switcher button {
+    padding: 10px 18px; /* Slightly larger buttons in overlay */
+    font-size: 18px;
+}
+
+
+/* Hero Section Styles (index.html) */
+.hero-section {
+    flex-grow: 1; /* Allow hero section to take available space */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center;
+    padding: 80px 0; /* Padding top and bottom */
+}
+
+.hero-section h2 { /* Changed from h1 in the previous version to h2 in your latest HTML */
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1; /* Tighter line height for large heading */
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Stronger shadow for heading */
+}
+
+.hero-section p {
+    font-size: 20px;
+    max-width: 600px; /* Limit width of description */
+    margin: 0 auto 40px auto; /* Center description and add bottom margin */
+    color: rgba(255, 255, 255, 0.9); /* Slightly translucent white */
+}
+
+.btn { /* General button style, replacing shop-now-btn for consistency */
+    display: inline-block; /* Allow padding and margins */
+    background-color: #FFD700; /* Gold/Yellow color */
+    color: #333; /* Dark text for button */
+    padding: 15px 40px;
+    border-radius: 8px; /* Slightly rounded corners */
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Button shadow */
+}
+
+.btn:hover {
+    background-color: #FFE033; /* Lighter yellow on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Features Section Styles (index.html) */
+.features-section {
+    padding: 60px 0 100px; /* Padding top, bottom */
+}
+
+.features-section .container {
+    display: flex;
+    justify-content: space-around; /* Distribute cards evenly */
+    gap: 30px; /* Space between cards */
+    flex-wrap: wrap; /* Allow cards to wrap to next line on smaller screens */
+}
+
+.feature-item { /* Changed from .feature-card */
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent white background */
+    border-radius: 15px; /* Rounded corners for cards */
+    padding: 30px;
+    text-align: center;
+    width: 30%; /* Approx width for 3 cards in a row */
+    min-width: 280px; /* Minimum width to prevent cards from becoming too narrow */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow for cards */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.feature-item:hover { /* Changed from .feature-card:hover */
+    transform: translateY(-5px); /* Lift card on hover */
+}
+
+.feature-item h4 { /* Styling for feature titles */
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.feature-item p { /* Styling for feature descriptions */
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* --- Pricing Section Styles --- */
+#pricing {
+    padding: 80px 0;
+    text-align: center;
+}
+
+#pricing h3 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.pricing-intro-text {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+.pricing-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.pricing-card {
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 0; /* Remove padding from card directly, add to body/header */
+    width: 30%;
+    min-width: 300px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* For header background to stay within border-radius */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    border-color: #FFD700; /* Highlight on hover */
+}
+
+.pricing-card.best-value {
+    border-color: #FFD700; /* Highlight best value */
+    box-shadow: 0 8px 40px rgba(255, 215, 0, 0.4); /* Stronger glow for best value */
+}
+
+.pricing-card .card-header {
+    padding: 20px 0;
+    color: #333;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.pricing-card .card-header h4 {
+    font-size: 28px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pricing-card .card-header.basic-plan-header {
+    background-color: #FFD700; /* Yellow */
+}
+
+.pricing-card .card-header.premium-plan-header {
+    background-color: #FFC107; /* Slightly darker yellow */
+}
+
+.pricing-card .card-header.enterprise-plan-header {
+    background-color: #FFA000; /* Orange-yellow */
+}
+
+.pricing-card .card-body {
+    padding: 30px;
+    flex-grow: 1; /* Allows body to take remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content */
+}
+
+.pricing-card .plan-type {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.pricing-card .features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: right; /* RTL alignment for list items */
+}
+
+.pricing-card .features-list li {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+    position: relative;
+    padding-right: 25px; /* Space for custom bullet */
+}
+
+.pricing-card .features-list li:last-child {
+    margin-bottom: 0;
+}
+
+.pricing-card .features-list li::before {
+    content: '✅'; /* Checkmark icon */
+    position: absolute;
+    right: 0;
+    color: #FFD700;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.pricing-card .price {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.pricing-card .price .amount {
+    font-size: 40px;
+    font-weight: 700;
+    color: #FFD700;
+}
+
+.pricing-card .price .currency {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.pricing-card .price .period {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pricing-card .note {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pricing-card .btn {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    display: flex; /* Make button content flex */
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between telegram icon and text */
+}
+
+.telegram-icon-small {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+/* --- Support Section Styles --- */
+#support {
+    background: rgba(255, 255, 255, 0.05); /* Slightly lighter background for contrast */
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
+}
+
+#support h3 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#support p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+/* --- About Us Section Styles --- */
+#about-us {
+    padding: 80px 0;
+    text-align: center;
+}
+
+#about-us h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#about-us p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Contact Section Styles --- */
+#contact {
+    padding: 80px 0;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+#contact p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.telegram-btn {
+    display: inline-flex; /* Use inline-flex for button with icon */
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+.telegram-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.small-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 15px;
+}
+
+/* --- Footer Styles --- */
+footer {
+    padding: 30px 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+
+/* Scroll-in animation */
+.animated-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animated-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Responsive Design Adjustments */
+/* No specific media query needed to hide/show nav for this overlay pattern */
+/* The overlay is full screen and controlled by JS */
+
+@media (max-width: 992px) { /* Tablet and smaller desktops */
+    .hero-section h2 {
+        font-size: 50px;
+    }
+
+    .hero-section p {
+        font-size: 18px;
+    }
+
+    .btn { /* General button style */
+        font-size: 18px;
+        padding: 12px 30px;
+    }
+
+    /* Features Section */
+    .features-section .container {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        align-items: center; /* Center stacked cards */
+    }
+
+    .feature-item { /* Changed from .feature-card */
+        width: 80%; /* Wider cards when stacked */
+        max-width: 400px; /* Max width for stacked cards */
+    }
+
+    /* Pricing Section */
+    #pricing h3 {
+        font-size: 40px;
+    }
+
+    .pricing-card {
+        width: 45%; /* Two cards per row on tablets */
+    }
+
+    /* Support, About Us, Contact Sections */
+    #support h3, #about-us h2, #contact h2 {
+        font-size: 40px;
+    }
+
+    #support p, #about-us p, #contact p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) { /* Mobile and smaller tablets */
+    .hero-section {
+        padding: 60px 0;
+    }
+
+    .hero-section h2 {
+        font-size: 40px;
+    }
+
+    .hero-section p {
+        font-size: 16px;
+    }
+
+    .features-section {
+        padding: 40px 0 80px;
+    }
+
+    .feature-item {
+        width: 90%; /* Even wider on smaller screens */
+    }
+
+    /* Pricing Section */
+    #pricing h3 {
+        font-size: 38px;
+    }
+
+    .pricing-card {
+        width: 80%; /* Single column on mobiles */
+        max-width: 400px; /* Limit max width for readability */
+    }
+
+    .pricing-card .card-header h4 {
+        font-size: 24px;
+    }
+
+    .pricing-card .price .amount {
+        font-size: 32px;
+    }
+
+    .pricing-card .price .currency {
+        font-size: 20px;
+    }
+
+    .pricing-card .price .period {
+        font-size: 16px;
+    }
+
+    .pricing-card .btn {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    /* Support, About Us, Contact Sections */
+    #support h3, #about-us h2, #contact h2 {
+        font-size: 38px;
+    }
+
+    #support p, #about-us p, #contact p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) { /* Very small mobile devices */
+    .hero-section h2 {
+        font-size: 32px;
+    }
+
+    .hero-section p {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: 16px;
+        padding: 10px 25px;
+    }
+
+    .feature-item {
+        padding: 25px;
+    }
+
+    .feature-item h4 {
+        font-size: 20px;
+    }
+
+    /* Pricing Section */
+    #pricing h3 {
+        font-size: 30px;
+    }
+
+    .pricing-card .card-header h4 {
+        font-size: 22px;
+    }
+
+    .pricing-card .features-list li {
+        font-size: 15px;
+    }
+
+    .pricing-card .price .amount {
+        font-size: 28px;
+    }
+
+    .pricing-card .price .currency {
+        font-size: 18px;
+    }
+
+    .pricing-card .price .period {
+        font-size: 15px;
+    }
+
+    /* Support, About Us, Contact Sections */
+    #support h3, #about-us h2, #contact h2 {
+        font-size: 30px;
+    }
+
+    .small-text {
+        font-size: 12px;
+    }
+
+    /* Language switcher buttons in overlay */
+    .fullscreen-nav-overlay .language-switcher button {
+        padding: 8px 14px;
+        font-size: 16px;
+    }
+}
