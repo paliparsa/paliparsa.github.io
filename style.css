@@ -11,6 +11,68 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll on overlay transition */
 }
 
+/* RTL Specific Styles - Apply when html[dir="rtl"] */
+html[dir="rtl"] body {
+    direction: rtl;
+}
+
+html[dir="rtl"] .container {
+    text-align: right; /* Default text alignment for RTL content */
+}
+
+/* Adjustments for specific elements in RTL */
+html[dir="rtl"] #hero .container,
+html[dir="rtl"] #features .container,
+html[dir="rtl"] #support .container,
+html[dir="rtl"] #about-us .container,
+html[dir="rtl"] #contact .container {
+    text-align: right;
+}
+
+/* Special adjustment for pricing cards list items to ensure checkmark alignment */
+html[dir="rtl"] .pricing-card .features-list {
+    text-align: right;
+}
+
+html[dir="rtl"] .pricing-card .features-list li {
+    padding-left: 25px; /* Space for custom bullet on the left */
+    padding-right: 0; /* Remove right padding */
+    text-align: right;
+}
+
+html[dir="rtl"] .pricing-card .features-list li::before {
+    left: 0; /* Position checkmark to the left */
+    right: auto; /* Remove right positioning */
+}
+
+html[dir="rtl"] .pricing-card .price {
+    direction: ltr; /* Keep numbers LTR even in RTL context */
+    unicode-bidi: isolate; /* Isolate this element from surrounding RTL text */
+    justify-content: center; /* Adjust as needed, sometimes numbers look better centered */
+}
+
+html[dir="rtl"] .pricing-card .card-body .btn {
+    direction: rtl; /* Ensure button text is RTL */
+    unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .pricing-card .btn .telegram-icon-small {
+    margin-right: 10px; /* Adjust margin for icon in RTL */
+    margin-left: 0;
+}
+
+html[dir="rtl"] .telegram-btn .telegram-icon {
+    margin-right: 10px; /* Adjust margin for icon in RTL */
+    margin-left: 0;
+}
+
+/* Specific adjustment for buttons containing both image and text */
+html[dir="rtl"] .btn .button-text {
+    direction: rtl;
+    unicode-bidi: embed;
+}
+
+
 .container {
     max-width: 1200px; /* Max width for content */
     margin: 0 auto; /* Center content */
