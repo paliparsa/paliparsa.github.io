@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (fullscreenNavOverlay && fullscreenNavOverlay.classList.contains('open')) {
                 fullscreenNavOverlay.classList.remove('open');
                 navToggle.classList.remove('active'); // Deactivate hamburger icon
+                document.body.style.overflow = ''; // <<< --- ADDED THIS LINE TO FIX SCROLLING
             }
 
             if (targetElement) {
@@ -200,13 +201,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (translations[lang] && translations[lang][key]) {
                 const originalContent = element.innerHTML;
                 const imgMatch = originalContent.match(/<img[^>]*>/);
+                const translationText = translations[lang][key];
 
                 if (imgMatch) {
                     const imgTag = imgMatch[0];
-                    // Replace the entire content while keeping the image and wrapping the text in a span
-                    element.innerHTML = imgTag + ' <span class="button-text">' + translations[lang][key] + '</span>';
+                    // If it's a button with an image, wrap the text in a span for separate direction control
+                    element.innerHTML = imgTag + `<span class="button-text">${translationText}</span>`;
                 } else {
-                    element.innerHTML = translations[lang][key];
+                    element.innerHTML = translationText;
                 }
             }
         });
@@ -217,8 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById(`lang-${lang}`).classList.add('active');
 
-        // Update HTML lang attribute for accessibility and proper rendering
+        // Update HTML lang and dir attributes for accessibility and proper rendering
         document.documentElement.lang = lang;
+        document.documentElement.dir = (lang === 'fa' ? 'rtl' : 'ltr');
 
         // Store selected language in localStorage
         localStorage.setItem('lang', lang);
