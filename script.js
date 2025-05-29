@@ -106,13 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
             'plan2-feature3': 'Suitable for heavy use and streaming',
             'plan2-feature4': 'High and stable speed',
             // Pricing Plan 3 (Unlimited Multi-User)
-            'plan3-title': '🚀 Unlimited Multi-User 🚀',
-            'plan3-type': '🛡 One Month | Unlimited VPN',
+            'plan3-title': '🇮🇷 Iran IP 🇮🇷',
+            'plan3-type': '🛡 One Month | Unlimited IranIP',
             'plan3-feature1': '🔺 Unlimited volume',
-            'plan3-feature2': 'Supports 2 or 3 simultaneous users',
-            'plan3-feature3': 'Ideal for family and friends',
-            'plan3-feature4': 'Maximum speed and stability',
-            'plan3-note': 'Three-user plan: 270,000T',
+            'plan3-feature2': 'Access to all Iranian sites without restrictions',
+            'plan3-feature3': 'Watch Iranian movies and series online',
+            'plan3-feature4': 'Managing bank accounts and financial and government apps',
+            'plan3-note': 'The price is calculated based on the daily exchange rate, and as the exchange rate decreases, the price also decreases.',
             'support-heading': 'Need Assistance?',
             'support-description': 'Our support team is ready to help you with any questions or technical issues.',
             'support-btn': 'Contact Support',
@@ -172,13 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
             'plan2-feature3': 'مناسب برای استفاده سنگین و استریم',
             'plan2-feature4': 'سرعت بالا و پایدار',
             // Pricing Plan 3 (Unlimited Multi-User)
-            'plan3-title': '🚀 نامحدود چندکاربره 🚀',
-            'plan3-type': '🛡 یک‌ماهه | فیلترشکن نامحدود',
+            'plan3-title': '🇮🇷آیپی ایران🇮🇷',
+            'plan3-type': '🛡 یک‌ماهه | آیپی ایران نامحدود',
             'plan3-feature1': '🔺 حجم نامحدود',
-            'plan3-feature2': 'پشتیبانی از 2 یا 3 کاربر همزمان',
-            'plan3-feature3': 'ایده‌آل برای خانواده و دوستان',
-            'plan3-feature4': 'حداکثر سرعت و پایداری',
-            'plan3-note': 'پلن سه‌کاربره: 270,000T',
+            'plan3-feature2': 'دسترسی به تمام سایت‌های ایرانی بدون محدودیت',
+            'plan3-feature3': 'تماشای آنلاین فیلم و سریال‌های نمایش خانگی',
+            'plan3-feature4': 'مدیریت حساب‌های بانکی و اپ‌های مالی و دولتی',
+            'plan3-note': ' قیمت بر اساس نرخ روز ارز محاسبه میشه و با کاهش نرخ ارز، قیمت هم کاهش پیدا می‌کنه',
             'support-heading': 'نیاز به کمک دارید؟',
             'support-description': 'تیم پشتیبانی ما آماده کمک به شما در هر گونه سوال یا مسائل فنی است.',
             'support-btn': 'تماس با پشتیبانی',
